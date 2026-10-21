@@ -1,0 +1,23 @@
+<header class="header">
+    <div class="header-row">
+        <a href="index.html" class="header-logo">AskAskTask</a>
+        <input type="search" class="search" placeholder="Поиск...">
+        <button type="button" class="btn-solid theme-success">Искать</button>
+        <!-- Авторизован -->
+        <div class="user-header user-header-auth">
+            <img src="static/img/jack_face.png" alt="Аватар Пользователя" class="user-avatar">
+            <div class="user-info">
+                <a href="settings.html" class="user-name">Джек Скеллингтон</a>
+                <div class="user-actions">
+                    <a href="settings.html" class="hero-link">Настройки</a>
+                    <button type="button" class="header-button-log" id="logout-btn">Выйти из аккаунта</button>
+                </div>
+            </div>
+        </div>
+        <!-- Не авторизован -->
+            <div class="user-header user-header-unauth">
+            <a href="login.html" class="header-link">Войти</a>
+            <a href="register.html" class="header-link">Регистрация</a>
+        </div>
+    </div>
+</header>
