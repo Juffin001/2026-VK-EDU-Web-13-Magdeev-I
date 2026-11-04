@@ -1,0 +1,20 @@
+{% extends 'questions/layout/base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero">
+    <form id="login-form" class="settings-form" action="{% url 'core:login' %}" method="POST">
+        {% csrf_token %}
+        <div class="settings-row">
+            <label for="login" class="settings-label">Логин</label>
+            <input type="text" id="login" name="login" class="settings-input" placeholder="логин">
+        </div>
+        <div class="settings-row">
+            <label for="password" class="settings-label">Пароль</label>
+            <input type="password" id="password" name="password" class="settings-input" placeholder="*********">
+        </div>
+
+        <button type="submit" class="btn-solid theme-success">Войти</button>
+
+    </form>
+</section>
+{% endblock %}

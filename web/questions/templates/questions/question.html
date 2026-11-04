@@ -1,0 +1,77 @@
+{% extends 'questions/layout/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="feed-content">
+    <div class="main-question">
+        <div class="question-card-stats">
+            <img src="{% static 'img/defualt-av.png' %}" alt="аватарка" class="question-card-avatar">
+            <div class="question-card-votes">
+                <button type="button" class="question-card-vote-btn" aria-label="Голос за">▲</button>
+                <span class="question-card-vote-count">{{ question.votes }}</span>
+                <button type="button" class="question-card-vote-btn" aria-label="Голос против">▼</button>
+            </div>
+        </div>
+        <div class="question-card-body">
+            <h3 class="question-card-title">
+                <a href="{% url 'questions:question' %}?id={{ question.id }}">{{ question.title }}</a>
+            </h3>
+            <p class="question-card-text">
+                {{ question.text }}
+            </p>
+            <div class="question-card-meta">
+                <a href="{% url 'questions:question' %}?id={{ question.id }}" class="question-card-answers">ответ ({{ question.answers|length }})</a>
+
+                <div class="question-card-tags">
+                    <span class="question-card-tags-label">Тэги:</span>
+                    {% for tag in question.tags %}
+                    <a href="#" class="tag">{{ tag.text }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="answers">
+        <div class="answers-list">
+            {% for answer in question.answers %}
+                {% if answer.is_correct == 1 %}
+                <div class="answer-card answer-card-correct">
+                {% else %}
+                <div class="answer-card">
+                {% endif %}
+                    <div class="answer-card-stats">
+                        <img src="{% static 'img/defualt-av.png' %}" alt="Аватарка пользователя" class="answer-card-avatar">
+                        <div class="answer-card-votes">
+                            <button type="button" class="answer-card-vote" aria-label="Голос за">▲</button>
+                            <span class="answer-card-vote-count">{{ answer.votes }}</span>
+                            <button type="button" class="answer-card-vote" aria-label="Голос против">▼</button>
+                        </div>
+                    </div>
+
+                    <div class="answer-card-body">
+                        <p class="answer-card-text">
+                            {{ answer.text }}
+                        </p>
+                        {% if answer.is_correct == 1 %}
+                        <div class="answer-card-correct">
+                            <input type="checkbox" checked>
+                            <span>Correct!</span>
+                        </div>
+                        {% else %}
+                        <div class="answer-card-incorrect">
+                            <input type="checkbox">
+                            <span>Correct!</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="answer-form">
+            <textarea class="answer-form-input" placeholder="Введите свой ответ..." rows="6"></textarea>
+            <button type="button" class="btn btn-primary answer-form-submit">Ответить</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
