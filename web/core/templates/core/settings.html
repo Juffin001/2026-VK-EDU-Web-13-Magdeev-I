@@ -1,0 +1,39 @@
+{% extends 'questions/layout/base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero">
+    <form class="settings-form" action="#" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="settings-row">
+            <label for="login" class="settings-label">Логин</label>
+            <input type="text" id="login" name="login" class="settings-input" value="Jack_Skelly">
+        </div>
+        <div class="settings-row">
+            <label for="email" class="settings-label">Email</label>
+            <input type="email" id="email" name="email" class="settings-input" value="abracadabra@mail.ru">
+        </div>
+
+        <div class="settings-row">
+            <label for="nickname" class="settings-label">Имя</label>
+            <input type="text" id="nickname" name="nickname" class="settings-input" value="Джэк Скеллингтон">
+        </div>
+
+        <div class="settings-row settings-row-avatar">
+            <span class="settings-label">Загрузить фото</span>
+            <div class="settings-avatar-block">
+                <img src="{% static 'img/jack_face.png' %}" alt="Аватар" class="settings-avatar-preview">
+                
+                <div class="settings-file-input">
+                    <input type="file" id="avatar" name="avatar" class="visually-hidden">
+                    
+                    <label for="avatar" class="settings-file-label">jack_face.png</label>
+                    <label for="avatar" class="btn-solid theme-success">выбрать</label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-solid theme-success">Сохранить</button>
+
+    </form>
+</section>
+{% endblock %}

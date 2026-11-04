@@ -1,0 +1,26 @@
+{% extends 'questions/layout/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="hero">
+    <form id="register-form" class="settings-form" action="#" method="POST">
+
+        <div class="ask-form-group">
+            <label for="question-title" class="ask-form-label">Заголовок</label>
+            <input type="text" id="question-title" name="title" class="ask-form-input" placeholder="Например: Как использовать тэг p в html?" maxlength="150">
+        </div>
+
+        <div class="ask-form-group">
+            <label for="question-text" class="ask-form-label">Полный вопрос</label>
+            <textarea id="question-text" name="text" class="ask-form-textarea" placeholder="Введите текст вопроса..." maxlength="3000"></textarea>
+        </div>
+        <div class="ask-form-group">
+            <label for="question-tags" class="ask-form-label">Теги</label>
+            <p class="ask-form-label">Добавьте до 5 тегов через запятую, чтобы ваш вопрос увидели нужные люди.</p>
+            <input type="text" id="question-tags" name="tags" class="ask-form-input" placeholder="javascript, css, верстка">
+        </div>
+        <button type="submit" class="btn-solid theme-success">Задать вопрос</button>
+
+    </form>
+</section>
+{% endblock %}

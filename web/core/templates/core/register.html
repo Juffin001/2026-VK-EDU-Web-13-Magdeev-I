@@ -1,0 +1,36 @@
+{% extends 'questions/layout/base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero">
+    <form id="register-form" class="settings-form" action="{% url 'core:login' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="settings-row">
+            <label for="login" class="settings-label">Логин</label>
+            <input type="text" id="login" name="login" class="settings-input" placeholder="логин">
+        </div>
+        <div class="settings-row">
+            <label for="email" class="settings-label">Email</label>
+            <input type="email" id="email" name="email" class="settings-input" placeholder="abracadabra@mail.ru">
+        </div>
+        <div class="settings-row">
+            <label for="password" class="settings-label">Пароль</label>
+            <input type="password" id="password" name="password" class="settings-input" placeholder="">
+        </div>
+        <div class="settings-row">
+            <label for="password-2" class="settings-label">Повторите пароль</label>
+            <input type="password" id="password-2" name="password" class="settings-input" placeholder="">
+        </div>
+        <div class="settings-row settings-row-avatar">
+            <span class="settings-label">Загрузить фото</span>
+            <div class="settings-avatar-block">
+                <div class="settings-file-input">
+                    <input type="file" id="avatar" name="avatar" class="visually-hidden">                            
+                    <label for="avatar" class="btn-solid theme-success">выбрать</label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn-solid theme-success">Зарегистрироваться</button>
+
+    </form>
+</section>
+{% endblock %}

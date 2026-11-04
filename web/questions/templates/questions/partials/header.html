@@ -1,0 +1,25 @@
+{% load static %}
+<header class="header">
+    <div class="header-row">
+        <a href="{% url 'questions:index' %}" class="header-logo">AskAskTask</a>
+        <input type="search" class="search" placeholder="Поиск...">
+        <a href="{% url 'questions:tag' %}" class="btn-solid theme-success">Искать</a>
+        {% if request.session.is_auth %}
+        <div class="user-header user-header-auth">
+            <img src="{% static 'img/jack_face.png' %}" alt="Аватар Пользователя" class="user-avatar">
+            <div class="user-info">
+                <a href="{% url 'core:profile' %}" class="user-name">Джек Скеллингтон</a>
+                <div class="user-actions">
+                    <a href="{% url 'core:profile' %}" class="hero-link">Настройки</a>
+                    <a href="{% url 'core:logout' %}" class="header-button-log">Выйти из аккаунта</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="user-header user-header-unauth">
+            <a href="{% url 'core:login' %}" class="header-link">Войти</a>
+            <a href="{% url 'core:signup' %}" class="header-link">Регистрация</a>
+        </div>
+        {% endif %}
+    </div>
+</header>

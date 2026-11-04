@@ -1,0 +1,22 @@
+<aside class="sidebar">
+    <div class="sidebar-block">
+        <h3 class="sidebar-title">
+            Популярные тэги
+        </h3>
+        <div class="sidebar-tags">
+            {% for tag in tags %}
+                <a href="{% url 'questions:tag' %}?id={{ tag.id }}" class="sidebar-tag">{{ tag.text }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="sidebar-block">
+        <h3 class="sidebar-title">
+            Лучшие пользователи
+        </h3>
+        <div class="sidebar-tags">
+            {% for best_user in best_users %}
+                <a href="{% url 'questions:tag' %}?id={{ tag.id }}" class="sidebar-tag">{{ best_user.text }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</aside>
