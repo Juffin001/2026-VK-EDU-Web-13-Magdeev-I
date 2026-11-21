@@ -3,7 +3,7 @@
     <div class="header-row">
         <a href="{% url 'questions:index' %}" class="header-logo">AskAskTask</a>
         <input type="search" class="search" placeholder="Поиск...">
-        <a href="{% url 'questions:tag' %}" class="btn-solid theme-success">Искать</a>
+        <button type="button" class="btn-solid theme-success" disabled>Искать</button>
         {% if request.session.is_auth %}
         <div class="user-header user-header-auth">
             <img src="{% static 'img/jack_face.png' %}" alt="Аватар Пользователя" class="user-avatar">

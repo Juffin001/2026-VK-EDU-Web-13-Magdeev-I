@@ -44,7 +44,7 @@ local_settings.py
 /static_root/
 
 # ==========================================
-# Node.js / NPM (на будущее)
+# Node.js / NPM
 # ==========================================
 node_modules/
 npm-debug.log*
@@ -60,6 +60,9 @@ build/
 # ==========================================
 .env
 .env.local
+.env.docker
+.env.*
+!.env.example
 .env.development.local
 .env.test.local
 .env.production.local
@@ -72,3 +75,6 @@ build/
 *.tmp
 *.bak
 *.swp
+
+/web/media/
+/web/staticfiles/

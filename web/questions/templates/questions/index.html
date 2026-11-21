@@ -4,7 +4,9 @@
 {% block content %}
 <div class="all_questions">
 {% for question in questions %}
-    {% include 'questions/partials/question.html' with question=question %}
+    {% include 'questions/partials/question.html' with question=question card_tags=question.tags.all %}
+{% empty %}
+    <p>Пока нет ни одного вопроса.</p>
 {% endfor %}
 </div>
 {% endblock %}
