@@ -14,18 +14,18 @@
         </div>
         <div class="question-card-body">
             <h3 class="question-card-title">
-                <a href="{% url 'questions:question' %}?id={{ question.id }}">{{ question.title }}</a>
+                <a href="{{ question.get_absolute_url }}">{{ question.title }}</a>
             </h3>
             <p class="question-card-text">
                 {{ question.text }}
             </p>
             <div class="question-card-meta">
-                <a href="{% url 'questions:question' %}?id={{ question.id }}" class="question-card-answers">ответ ({{ question.answers|length }})</a>
+                <a href="{{ question.get_absolute_url }}" class="question-card-answers">ответ ({{ page_obj.paginator.count }})</a>
 
                 <div class="question-card-tags">
                     <span class="question-card-tags-label">Тэги:</span>
-                    {% for tag in question.tags %}
-                    <a href="#" class="tag">{{ tag.text }}</a>
+                    {% for tag in question.tags.all %}
+                    <a href="{{ tag.get_absolute_url }}" class="tag">{{ tag.text }}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -33,8 +33,8 @@
     </div>
     <div class="answers">
         <div class="answers-list">
-            {% for answer in question.answers %}
-                {% if answer.is_correct == 1 %}
+            {% for answer in page_obj %}
+                {% if answer.is_correct %}
                 <div class="answer-card answer-card-correct">
                 {% else %}
                 <div class="answer-card">
@@ -52,7 +52,7 @@
                         <p class="answer-card-text">
                             {{ answer.text }}
                         </p>
-                        {% if answer.is_correct == 1 %}
+                        {% if answer.is_correct %}
                         <div class="answer-card-correct">
                             <input type="checkbox" checked>
                             <span>Correct!</span>
@@ -65,6 +65,8 @@
                         {% endif %}
                     </div>
                 </div>
+            {% empty %}
+                <p>На этот вопрос пока нет ответов.</p>
             {% endfor %}
         </div>
 

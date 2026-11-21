@@ -4,8 +4,10 @@
             Популярные тэги
         </h3>
         <div class="sidebar-tags">
-            {% for tag in tags %}
-                <a href="{% url 'questions:tag' %}?id={{ tag.id }}" class="sidebar-tag">{{ tag.text }}</a>
+            {% for tag in popular_tags %}
+                <a href="{{ tag.get_absolute_url }}" class="sidebar-tag">{{ tag.text }}</a>
+            {% empty %}
+                <span>Пока нет популярных тегов.</span>
             {% endfor %}
         </div>
     </div>
@@ -14,8 +16,10 @@
             Лучшие пользователи
         </h3>
         <div class="sidebar-tags">
-            {% for best_user in best_users %}
-                <a href="{% url 'questions:tag' %}?id={{ tag.id }}" class="sidebar-tag">{{ best_user.text }}</a>
+            {% for username in best_users %}
+                <span class="sidebar-tag">{{ username }}</span>
+            {% empty %}
+                <span>Пока нет пользователей с профилем.</span>
             {% endfor %}
         </div>
     </div>
